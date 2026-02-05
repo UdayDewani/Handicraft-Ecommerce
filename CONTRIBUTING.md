@@ -15,7 +15,7 @@ git clone https://github.com/UdayDewani/Handicraft-Ecommerce.git
 ## 2. Move into the Project Folder
 
 ```bash
-cd Handicraft-Ecommerce
+cd MERN-Ecommerce-Site
 ```
 
 ---
