@@ -54,7 +54,7 @@ git checkout your-name
 
 **Project Structure:**
 ```
-Handicraft-Ecommerce/
+MERN-Ecommerce-Site/
 ├── backend/      # Node.js/Express API
 ├── frontend/     # React application
 └── README.md

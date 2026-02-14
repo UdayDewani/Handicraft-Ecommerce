@@ -291,7 +291,6 @@ export const {
     authError,
     authLogout,
     isTokenValid,
-    doneSuccess,
     getDeleteSuccess,
     getRequest,
     productSuccess,

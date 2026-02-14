@@ -179,21 +179,24 @@ const deleteProduct = async (req, res) => {
 
 const deleteProducts = async (req, res) => {
     try {
-        const deletionResult = await Product.deleteMany({ seller: req.params.id });
+        // Find products BEFORE deleting them so we can clean up carts
+        const productsToDelete = await Product.find({ seller: req.params.id });
 
-        const deletedCount = deletionResult.deletedCount || 0;
-
-        if (deletedCount === 0) {
+        if (productsToDelete.length === 0) {
             res.send({ message: "No products found to delete" });
             return;
         }
 
-        const deletedProducts = await Product.find({ seller: req.params.id });
+        const productIds = productsToDelete.map(product => product._id);
 
+        // Clean up customer carts first
         await Customer.updateMany(
-            { "cartDetails._id": { $in: deletedProducts.map(product => product._id) } },
-            { $pull: { cartDetails: { _id: { $in: deletedProducts.map(product => product._id) } } } }
+            { "cartDetails._id": { $in: productIds } },
+            { $pull: { cartDetails: { _id: { $in: productIds } } } }
         );
+
+        // Now delete the products
+        const deletionResult = await Product.deleteMany({ seller: req.params.id });
 
         res.send(deletionResult);
     } catch (error) {
