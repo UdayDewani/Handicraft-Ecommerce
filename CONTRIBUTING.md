@@ -15,7 +15,7 @@ git clone https://github.com/UdayDewani/Handicraft-Ecommerce.git
 ## 2. Move into the Project Folder
 
 ```bash
-cd Handicraft-Ecommerce
+cd MERN-Ecommerce-Site
 ```
 
 ---
@@ -54,7 +54,7 @@ git checkout your-name
 
 **Project Structure:**
 ```
-Handicraft-Ecommerce/
+MERN-Ecommerce-Site/
 ├── backend/      # Node.js/Express API
 ├── frontend/     # React application
 └── README.md
